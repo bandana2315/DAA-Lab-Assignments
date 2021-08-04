@@ -22,10 +22,10 @@ int jump_search(int ar[], int n, int key) {
             return -1;
     }
 
-    if (ar[int(prev)] == key)
+    if (ar[int(prev)] == key) {
         c++;
-    return prev;
-
+        return prev;
+    }
     return -1;
 }
 
