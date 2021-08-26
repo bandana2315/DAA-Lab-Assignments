@@ -1,55 +1,57 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<math.h>
+#include<vector>
 using namespace std;
-int c = 0;
-int linearSearch(int ar[], int, int, int);
-int exponential_search(int ar[], int n, int key) {
-    if (ar[0] == key) {
+void exponential(vector<int>, int, int);
+void linear(vector<int>arr, int i, int n, int num, int c)
+{
+    bool flag = false;
+    for (; i < n; i++)
+    {
         c++;
-        return 0;
-    }
-    else {
-        c++;
-        int i = 1;
-        while (i < n && ar[i] <= key)
+        if (arr[i] == num)
         {
-            c++;
-            i = i * 2;
-            return linearSearch(ar, i / 2, n, key);
+            cout << "Present" << c << endl;
+            flag = true;
+            break;
         }
     }
-    return -1;
+    if (!flag)
+        cout << "Not Present" << c << endl;
 }
-int linearSearch(int ar[], int index, int n, int key) {
-
-    for (int i = index; i < n; i++) {
-        if (ar[i] == key)
-            c++;
-        return i;
+void exponential(vector<int>arr, int n, int num)
+{
+    int c = 0;
+    if (arr[0] == num)
+    {
+        c++;
+        cout << "Present" << c;
+        return;
     }
     c++;
-    return -1;
+
+    int i = 1;
+    while (i < n && arr[i] <= num)
+    {
+        c++;
+        i *= 2;
+    }
+    linear(arr, int(i / 2), n, num, c);
 }
-
-int main() {
-    int t, n, key;
+int main()
+{
+    int t;
     cin >> t;
-    int ar[1000];
-
-    while (t > 0) {
+    while (t > 0)
+    {
+        int n = 0;
         cin >> n;
-        for (int i = 0; i < n; i++) {
-            cin >> ar[i];
-        }
-        cin >> key;
-
-        if (exponential_search(ar, n, key) > 0) {
-            cout << " present " << c << endl;
-            c = 0;
-        }
-        else {
-            cout << " not present " << c << endl;
-            c = 0;
-        }
+        vector<int> arr(n);
+        for (int i = 0; i < n; i++)
+            cin >> arr[i];
+        int num;
+        cin >> num;
+        exponential(arr, n, num);
         t--;
     }
 }
