@@ -46,6 +46,10 @@ int main()
         for (int i = 0; i < n; i++)
             cin >> arr[i];
         sort(arr, 0, n - 1);
+        for (int i = 0; i < n; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
         bool flag = false;
         for (int i = 0; i < n - 1; i++)
         {
